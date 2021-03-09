@@ -12,14 +12,14 @@ misp_fqdn = "192.168.32.65"
 misp_token = "l030qkovNgklQjSQ8Str4FMEbSBks3T6SDy9RGH0"
 qradar_fqdn = "192.168.32.154"
 qradar_token = "1fc3ea23-5a86-4439-b867-481e582b1f37"
-reference_set_name = "_MISP_Event_IOC_URLS" 
+reference_set_name = "_MISP_Event_IOC_MD5" 
 
 ########################################################################
 
 
 url_pull = 'https://'+misp_fqdn+'/attributes/restSearch/json'
 headers_pull = {'Authorization': misp_token , 'Content-Type': 'application/json', 'Accept': 'application/json'}
-data_pull = {"request": {"type": "md5", "category": "Payload delivery", "last": "1d", "enforceWarnlinglist": "True"}}
+data_pull = {"request": {"type": "md5", "category": "Payload delivery", "last": "10d", "enforceWarnlinglist": "True"}}
 url_push = 'https://'+qradar_fqdn+'/api/reference_data/sets/bulk_load/'+reference_set_name
 headers_push = {'SEC': qradar_token , 'Content-Type': 'application/json', 'Version': '9.0', 'Accept': 'application/json'}
 

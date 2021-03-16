@@ -11,3 +11,10 @@ python QRmisp.py funcion ioc_type referenceSet_name días_atrás
 python QRmisp.py load_iocs URL _MISP_Event_IOC_URLS 20
 
 
+Admite como parámetros de ioc_type : 
+- URL 
+- MD5 
+- SHA256 
+- DOMAIN 
+- IP_SRC 
+- IP_DST

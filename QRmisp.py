@@ -8,6 +8,12 @@ requests.packages.urllib3.disable_warnings()
 from keys import misp_fqdn, misp_token, qradar_fqdn, qradar_token
 import fire
 
+# ioc_type puede ser URL, MD5, SHA256, DOMAIN, IP_DST ,IP_SRC
+# referece_set_name es el nombre del referenceSet de QRadar donde van a ir los IoCs 
+# days , es la cant. de dias previos que se quiere retornar la data , por ej: "los IoCs de los ultimos 10 dias"
+# Uso:
+# python3 QRmisp.py load_iocs MD5 _MISP_Events_IOCS-MD5 10
+
 def load_iocs (ioc_type, reference_set_name,days):
   url_pull = "https://"+misp_fqdn+"/attributes/restSearch/json"
   headers_pull = {'Authorization': misp_token , 'Content-Type': 'application/json', 'Accept': 'application/json'}
@@ -50,7 +56,6 @@ def load_iocs (ioc_type, reference_set_name,days):
             continue
     json.dumps(clean_iocs)
     number_of_IOCs = str(len(clean_iocs))
-    print (clean_iocs)
     print("IOCs extraídos del JSON en un formato piola...ahí lo mandamos al QRadar...")
   else:
     for value in j3:

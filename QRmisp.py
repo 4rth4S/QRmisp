@@ -50,14 +50,14 @@ def load_iocs (ioc_type, reference_set_name,days):
             continue
     json.dumps(clean_iocs)
     number_of_IOCs = str(len(clean_iocs))
-    print("IOCs extraídos del JSON en un formato piola...ahí lo mandamos a QRadar...")
     print (clean_iocs)
+    print("IOCs extraídos del JSON en un formato piola...ahí lo mandamos al QRadar...")
   else:
     for value in j3:
       iocs.append(value["value"])
     json.dumps(iocs)
     number_of_IOCs = str(len(iocs))
-    print("ya estan limpios estos IOCs..")
+    print("IOCs extraídos del JSON en un formato piola...ahí lo mandamos al QRadar...")
   url_push = "https://"+qradar_fqdn+"/api/reference_data/sets/bulk_load/"+reference_set_name
   headers_push = {'SEC': qradar_token , 'Content-Type': 'application/json', 'Version': '9.0', 'Accept': 'application/json'}
   if ioc_type=='URL':
